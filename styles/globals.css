@@ -1,0 +1,63 @@
+@layer reset, base, components, utilities;
+
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body, h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
+}
+
+@layer base {
+  :root {
+    --bg: #0e1116;
+    --panel: #171b22;
+    --text: #e6e7eb;
+    --muted: #9aa3b2;
+    --accent: #41b883;
+  }
+  body {
+    background: radial-gradient(1200px 800px at 80% -10%, rgba(65,184,131,0.08), transparent), var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
+}
+
+@layer components {
+  .container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100dvh;
+  }
+  .header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00));
+    position: sticky; top: 0; z-index: 10; backdrop-filter: blur(6px);
+  }
+  .title { font-weight: 700; letter-spacing: 0.2px; }
+  .muted { color: var(--muted); }
+  .panel {
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+  }
+  .toolbar { display: flex; gap: 10px; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12);
+    color: var(--text); background: #151922; cursor: pointer;
+    transition: transform .12s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.2); background: #1a1f2a; }
+  .btn.primary { background: linear-gradient(180deg, #2a855a, #1f6f4b); border-color: rgba(0,0,0,0.2); }
+  .btn.primary:hover { background: linear-gradient(180deg, #319c6b, #267f58); }
+  .badge { padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); }
+}
+
+@layer utilities {
+  .main { display: grid; grid-template-columns: 1fr 360px; gap: 18px; padding: 18px; }
+  .sidebar { display: grid; gap: 12px; align-content: start; }
+  .canvasWrap { position: relative; border-radius: 12px; overflow: hidden; }
+  .footer { display: flex; gap: 12px; justify-content: space-between; padding: 14px 18px; }
+}
